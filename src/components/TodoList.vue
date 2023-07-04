@@ -3,7 +3,7 @@
     <ul>
       <li v-for="(item, index) in todoItems" :key="index" class="shadow">
         {{ item }}
-        <span class="removeBtn" @click="removeTodo">
+        <span class="removeBtn" @click="removeTodo(item, index)">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </span>
       </li>
@@ -25,7 +25,19 @@ export default {
     }
   },
   methods: {
-    removeTodo() {},
+    removeTodo(item, index) {
+      // 클릭하면 클릭한것 삭제. index를 받을 수 있을것같음.
+      // 다만 지금 console.log()를 찍게되면 어느아이템이나 동일하게 작동
+      // console.log();
+
+      // 특정 아이템만 가능하게하기..
+      console.log(item, index);
+      localStorage.removeItem("todoListItem");
+      // 특정 인덱스에서 하나 지우기(화면 반영용)
+      this.todoItems.splice(index, 1); // splice의 경우 기존배열을 변경해 새로운 배열을 반환(제거한 애들의 배열)
+      // 다시 로컬스토리지에 담기
+      localStorage.setItem("todoListItem", JSON.parse(this.todoItems));
+    },
   },
 };
 </script>
