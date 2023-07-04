@@ -18,10 +18,13 @@ export default {
       todoItem: [],
     };
   },
+
   methods: {
     addTodo() {
       // data 안의 newTodoItem에 접근
-      console.log(this.newTodoItem);
+      if (localStorage.getItem("todoListItem")) {
+        this.todoItem = JSON.parse(localStorage.getItem("todoListItem"));
+      }
       // 버튼 클릭할때마다
       this.todoItem.push(this.newTodoItem);
       // 저장하는 로직후
