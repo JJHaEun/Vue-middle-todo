@@ -2,10 +2,10 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png" />
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <TodoHeader />
-    <TodoInput />
-    <TodoList />
-    <TodoFooter />
+    <todo-header />
+    <todo-input />
+    <todo-list />
+    <todo-footer />
   </div>
 </template>
 
@@ -20,10 +20,10 @@ export default {
   name: "App",
   components: {
     // HelloWorld
-    TodoHeader,
-    TodoInput,
-    TodoList,
-    TodoFooter,
+    "todo-header": TodoHeader,
+    "todo-input": TodoInput,
+    "todo-list": TodoList,
+    "todo-footer": TodoFooter,
   },
 };
 </script>
