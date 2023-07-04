@@ -1,6 +1,6 @@
 <template>
   <div class="inputBox shadow">
-    <input type="text" v-model="newTodoItem" />
+    <input type="text" v-model="newTodoItem" @keyup.enter="addTodo" />
     <!-- v-model의 값을 저장. -->
     <!-- <button >add</button> -->
     <span class="appContainer" @click="addTodo">
