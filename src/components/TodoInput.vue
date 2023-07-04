@@ -5,7 +5,7 @@
     <!-- <button >add</button> -->
     <span class="appContainer" @click="addTodo">
       <!-- <i class="fa fa-plus addBtn" aria-hidden="true"></i>222 -->
-      <span class="addBtn">+</span>
+      <i class="fa fa-plus addBtn"></i>
     </span>
   </div>
 </template>
@@ -61,7 +61,6 @@ input:focus {
   cursor: pointer;
 }
 .addBtn {
-  font-size: 30px;
   font-weight: 800;
   color: white;
   /* vertical-align: middle; */
