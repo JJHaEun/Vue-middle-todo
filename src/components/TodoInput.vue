@@ -15,6 +15,7 @@ export default {
   data() {
     return {
       newTodoItem: "",
+      todoItem: [],
     };
   },
   methods: {
@@ -22,9 +23,9 @@ export default {
       // data 안의 newTodoItem에 접근
       console.log(this.newTodoItem);
       // 버튼 클릭할때마다
-
+      this.todoItem.push(this.newTodoItem);
       // 저장하는 로직후
-      localStorage.setItem("todoList", this.newTodoItem);
+      localStorage.setItem("todoListItem", JSON.stringify(this.todoItem));
       // 입력값 초기화
       this.clearInput();
     },
