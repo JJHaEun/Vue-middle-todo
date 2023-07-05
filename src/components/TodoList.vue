@@ -51,9 +51,15 @@ export default {
     },
     toggleComplete(todo, i) {
       // 체크 버튼을 클릭시에 해당 item completed => 토글  t <=> f
-      // 해당 인덱스접근
+      // 해당 요소 접근
       // todo.completed ? (todo.completed = false) : (todo.completed = true);
       todo.completed = !todo.completed;
+
+      // 로컬스토리지에 아이템 삭제후 다시 넣기
+      // 로컬스토리지 데이터 갱신
+      localStorage.removeItem("todoListItem");
+      localStorage.setItem("todoListItem", JSON.stringify(this.todoItems));
+
       console.log(todo.completed);
       console.log(i);
     },
