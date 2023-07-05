@@ -64,9 +64,11 @@ li {
   line-height: 45px;
   color: #62acde;
   margin-right: 5px;
+  cursor: pointer;
 }
 .checkBtnCompleted {
   color: #b3adad;
+  cursor: pointer;
 }
 .textCompleted {
   text-decoration: line-through;
@@ -75,5 +77,6 @@ li {
 .removeBtn {
   margin-left: auto;
   color: #de4343;
+  cursor: pointer;
 }
 </style>

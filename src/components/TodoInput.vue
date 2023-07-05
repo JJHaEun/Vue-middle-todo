@@ -12,7 +12,16 @@
       you can use custom content here to overwrite
       default content
     -->
-      <h3 slot="header">custom header</h3>
+      <h3 slot="header">
+        경고!!!
+        <span @click="ModalShow">
+          <i class="fa fa-times closeModalBtn" aria-hidden="true"></i>
+        </span>
+      </h3>
+      <h4 slot="body">입력되지 않았습니다</h4>
+      <span slot="footer"
+        ><i class="fa fa-copyright" aria-hidden="true"></i>copyright</span
+      >
     </Modal>
   </div>
 </template>
@@ -38,11 +47,14 @@ export default {
         // 입력값 초기화
         this.clearInput();
       } else {
-        //
+        this.ModalShow();
       }
     },
     clearInput() {
       this.newTodoItem = "";
+    },
+    ModalShow() {
+      this.showModal = !this.showModal;
     },
   },
   components: {
@@ -80,6 +92,11 @@ input:focus {
 .addBtn {
   font-weight: 800;
   color: white;
+  cursor: pointer;
   /* vertical-align: middle; */
+}
+.closeModalBtn {
+  color: #42b983;
+  cursor: pointer;
 }
 </style>
