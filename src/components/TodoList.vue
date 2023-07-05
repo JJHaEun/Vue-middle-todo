@@ -3,10 +3,13 @@
     <ul>
       <li v-for="(todo, index) in todoItems" :key="index" class="shadow">
         <span @click="toggleComplete(todo, index)">
-          <i class="checkBtn fa fa-check" aria-hidden="true"></i>
+          <i
+            class="checkBtn fa fa-check"
+            aria-hidden="true"
+            :class="{ checkBtnCompleted: todo.completed }"
+          ></i>
         </span>
         <span :class="{ textCompleted: todo.completed }">
-          <!-- class="{todo.completed ? textCompleted : null}" -->
           {{ todo.item }}
         </span>
         <span class="removeBtn" @click="removeTodo(todo, index)">
@@ -47,9 +50,10 @@ export default {
       this.todoItems.push(JSON.parse(localStorage.getItem("todoListItem")));
     },
     toggleComplete(todo, i) {
-      // 체크 버튼을 클릭시에 해당 item completed => 토글
+      // 체크 버튼을 클릭시에 해당 item completed => 토글  t <=> f
       // 해당 인덱스접근
-      todo.completed ? (todo.completed = false) : (todo.completed = true);
+      // todo.completed ? (todo.completed = false) : (todo.completed = true);
+      todo.completed = !todo.completed;
       console.log(todo.completed);
       console.log(i);
     },
