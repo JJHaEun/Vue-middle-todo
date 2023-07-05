@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <li v-for="(todo, index) in todoItems" :key="index" class="shadow">
+      <li v-for="(todo, index) in todoItemsProps" :key="index" class="shadow">
         <span @click="toggleComplete(todo, index)">
           <i
             class="checkBtn fa fa-check"
@@ -12,7 +12,7 @@
         <span :class="{ textCompleted: todo.completed }">
           {{ todo.item }}
         </span>
-        <span class="removeBtn" @click="removeTodo(todo, index)">
+        <span class="removeBtn" @click="removeTodo(todo)">
           <i class="fa fa-trash" aria-hidden="true"></i>
         </span>
       </li>
@@ -22,46 +22,22 @@
 
 <script>
 export default {
-  data() {
-    return {
-      todoItems: [],
-    };
-  },
-  created() {
-    if (localStorage.getItem("todoListItem") !== "[]") {
-      this.todoItems = JSON.parse(localStorage.getItem("todoListItem"));
-    }
-
-    console.log(typeof this.todoItems);
-  },
+  props: ["todoItemsProps"],
   methods: {
-    removeTodo(_, index) {
+    removeTodo(todo, index) {
       // 클릭하면 클릭한것 삭제. index를 받을 수 있을것같음.
       // 다만 지금 console.log()를 찍게되면 어느아이템이나 동일하게 작동
       // console.log();
 
       // 특정 아이템만 가능하게하기..
       // console.log(item, index);
-      localStorage.removeItem("todoListItem");
-      // 특정 인덱스에서 하나 지우기(화면 반영용)
-      this.todoItems.splice(index, 1); // splice의 경우 기존배열을 변경해 새로운 배열을 반환(제거한 애들의 배열)
-      // 다시 로컬스토리지에 담기
-      localStorage.setItem("todoListItem", JSON.stringify(this.todoItems));
-      this.todoItems.push(JSON.parse(localStorage.getItem("todoListItem")));
+      this.$emit("removeTodoItem", todo, index);
     },
-    toggleComplete(todo, i) {
+    toggleComplete(todo) {
       // 체크 버튼을 클릭시에 해당 item completed => 토글  t <=> f
       // 해당 요소 접근
+      this.$emit("completedTodoItem", todo);
       // todo.completed ? (todo.completed = false) : (todo.completed = true);
-      todo.completed = !todo.completed;
-
-      // 로컬스토리지에 아이템 삭제후 다시 넣기
-      // 로컬스토리지 데이터 갱신
-      localStorage.removeItem("todoListItem");
-      localStorage.setItem("todoListItem", JSON.stringify(this.todoItems));
-
-      console.log(todo.completed);
-      console.log(i);
     },
   },
 };

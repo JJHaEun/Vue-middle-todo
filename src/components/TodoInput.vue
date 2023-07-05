@@ -24,23 +24,8 @@ export default {
       // data 안의 newTodoItem에 접근
 
       if (this.newTodoItem !== "") {
-        let object = {
-          completed: false,
-          item: this.newTodoItem,
-        };
-
-        // 기존의 로컬 스토리지 데이터 가져오기
-        let existingItems = localStorage.getItem("todoListItem");
-        this.todoItems = existingItems ? JSON.parse(existingItems) : [];
-
-        // 새로운 항목 추가
-
-        // 버튼 클릭할때마다
-        this.todoItems.push(object);
-        // 저장하는 로직후
-        localStorage.setItem("todoListItem", JSON.stringify(this.todoItems));
-
         // 입력값 초기화
+        this.$emit("addTodoItem", this.newTodoItem);
         this.clearInput();
       }
     },
