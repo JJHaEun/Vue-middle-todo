@@ -7,15 +7,24 @@
       <!-- <i class="fa fa-plus addBtn" aria-hidden="true"></i>222 -->
       <i class="fa fa-plus addBtn"></i>
     </span>
+    <Modal v-if="showModal" @close="showModal = false">
+      <!--
+      you can use custom content here to overwrite
+      default content
+    -->
+      <h3 slot="header">custom header</h3>
+    </Modal>
   </div>
 </template>
 
 <script>
+import Modal from "./commons/Modal.vue";
+
 export default {
   data() {
     return {
       newTodoItem: "",
-      todoItems: [],
+      showModal: false,
     };
   },
 
@@ -24,14 +33,21 @@ export default {
       // data 안의 newTodoItem에 접근
 
       if (this.newTodoItem !== "") {
-        // 입력값 초기화
         this.$emit("addTodoItem", this.newTodoItem);
+
+        // 입력값 초기화
         this.clearInput();
+      } else {
+        //
       }
     },
     clearInput() {
       this.newTodoItem = "";
     },
+  },
+  components: {
+    // input컨포넌트의 하위 컴포넌트로 모달 컴포넌트 넣음
+    Modal,
   },
 };
 </script>
