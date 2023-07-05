@@ -52,14 +52,15 @@ export default {
     },
     removeOneTodoItem(_, index) {
       localStorage.removeItem("todoListItem");
+
       // 특정 인덱스에서 하나 지우기(화면 반영용)
       this.todoItems.splice(index, 1); // splice의 경우 기존배열을 변경해 새로운 배열을 반환(제거한 애들의 배열)
       // 다시 로컬스토리지에 담기
       localStorage.setItem("todoListItem", JSON.stringify(this.todoItems));
     },
-    todoCheckedItem(todo) {
-      todo.completed = !todo.completed;
-
+    todoCheckedItem(_, i) {
+      // todo.completed = !todo.completed;
+      this.todoItems[i].completed = !this.todoItems[i].completed;
       // 로컬스토리지에 아이템 삭제후 다시 넣기
       // 로컬스토리지 데이터 갱신
       localStorage.removeItem("todoListItem");

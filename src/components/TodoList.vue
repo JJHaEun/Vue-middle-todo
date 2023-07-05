@@ -33,10 +33,10 @@ export default {
       // console.log(item, index);
       this.$emit("removeTodoItem", todo, index);
     },
-    toggleComplete(todo) {
+    toggleComplete(todo, i) {
       // 체크 버튼을 클릭시에 해당 item completed => 토글  t <=> f
       // 해당 요소 접근
-      this.$emit("completedTodoItem", todo);
+      this.$emit("completedTodoItem", todo, i);
       // todo.completed ? (todo.completed = false) : (todo.completed = true);
     },
   },
