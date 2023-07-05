@@ -10,7 +10,7 @@
       @removeTodoItem="removeOneTodoItem"
       @completedTodoItem="todoCheckedItem"
     />
-    <todo-footer />
+    <todo-footer @clearAllTodo="clearAllItems" />
   </div>
 </template>
 
@@ -65,6 +65,12 @@ export default {
       // 로컬스토리지 데이터 갱신
       localStorage.removeItem("todoListItem");
       localStorage.setItem("todoListItem", JSON.stringify(this.todoItems));
+    },
+    clearAllItems() {
+      localStorage.clear(); // 로컬스토리지 지우기(전부 지우기) => 로컬스토리지의 금지표시(Clear All)와 동알
+
+      // 화면에 보이는 this.todoItems배열도 비우기
+      this.todoItems = [];
     },
   },
   created() {
