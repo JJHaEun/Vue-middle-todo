@@ -34,13 +34,13 @@ export default {
     // 상위 컴포넌트에서 작성 ⇒>
     // v-on:하위컴포넌트의 이벤트 이름= “현재컴포넌트 메서드 이름”
     addOneTodoItem(newTodoItem) {
-      let object = {
+      const object = {
         completed: false,
         item: newTodoItem,
       };
 
       // 기존의 로컬 스토리지 데이터 가져오기
-      let existingItems = localStorage.getItem("todoListItem");
+      const existingItems = localStorage.getItem("todoListItem");
       this.todoItems = existingItems ? JSON.parse(existingItems) : [];
 
       // 새로운 항목 추가
