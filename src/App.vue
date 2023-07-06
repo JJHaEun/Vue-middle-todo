@@ -6,7 +6,6 @@
     <!-- // v-on:하위컴포넌트의 이벤트 이름= “현재컴포넌트 메서드 이름” -->
     <todo-input @addTodoItem="addOneTodoItem" />
     <todo-list
-      :todoItemsProps="todoItems"
       @removeTodoItem="removeOneTodoItem"
       @completedTodoItem="todoCheckedItem"
     />
@@ -29,27 +28,13 @@ export default {
     };
   },
   methods: {
+    // methods.부분이 스토어의 mutations와 같다!!
+
     // 그럼 input창에 클릭이나 엔터를 치고 해당 이벤트를 올려
     // ⇒ todo추가하는 데이터를 App.vue 에서 처리하게 해보자.
     // 상위 컴포넌트에서 작성 ⇒>
     // v-on:하위컴포넌트의 이벤트 이름= “현재컴포넌트 메서드 이름”
-    addOneTodoItem(newTodoItem) {
-      const object = {
-        completed: false,
-        item: newTodoItem,
-      };
 
-      // 기존의 로컬 스토리지 데이터 가져오기
-      const existingItems = localStorage.getItem("todoListItem");
-      this.todoItems = existingItems ? JSON.parse(existingItems) : [];
-
-      // 새로운 항목 추가
-
-      // 버튼 클릭할때마다
-      this.todoItems.push(object);
-      // 저장하는 로직후
-      localStorage.setItem("todoListItem", JSON.stringify(this.todoItems));
-    },
     removeOneTodoItem(_, index) {
       localStorage.removeItem("todoListItem");
 
@@ -73,11 +58,7 @@ export default {
       this.todoItems = [];
     },
   },
-  created() {
-    if (localStorage.getItem("todoListItem") !== "[]") {
-      this.todoItems = JSON.parse(localStorage.getItem("todoListItem"));
-    }
-  },
+
   components: {
     // HelloWorld
     "todo-header": TodoHeader,

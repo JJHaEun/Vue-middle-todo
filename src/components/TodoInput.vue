@@ -42,7 +42,8 @@ export default {
       // data 안의 newTodoItem에 접근
 
       if (this.newTodoItem !== "") {
-        this.$emit("addTodoItem", this.newTodoItem);
+        // this.$emit("addTodoItem", this.newTodoItem);
+        this.$store.commit("addOneTodoItem", this.newTodoItem);
 
         // 입력값 초기화
         this.clearInput();

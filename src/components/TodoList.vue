@@ -2,7 +2,7 @@
   <div>
     <transition-group name="list" tag="ul">
       <li
-        v-for="(todo, index) in todoItemsProps"
+        v-for="(todo, index) in this.$store.state.todoItems"
         :key="index + 1"
         class="shadow"
       >
@@ -26,8 +26,8 @@
 
 <script>
 export default {
-  props: ["todoItemsProps"],
   methods: {
+    // methods.부분이 스토어의 mutations와 같다!!
     removeTodo(todo, index) {
       // 클릭하면 클릭한것 삭제. index를 받을 수 있을것같음.
       // 다만 지금 console.log()를 찍게되면 어느아이템이나 동일하게 작동
