@@ -12,7 +12,8 @@ export default {
   methods: {
     clearAll() {
       // localStorage.clear(); // 로컬스토리지 지우기(전부 지우기) => 로컬스토리지의 금지표시(Clear All)와 동알
-      this.$emit("clearAllTodo");
+      // this.$emit("clearAllTodo");
+      this.$store.commit("clearAllItems");
     },
   },
 };

@@ -57,5 +57,11 @@ export const store = new Vuex.Store({
       localStorage.removeItem("todoListItem");
       localStorage.setItem("todoListItem", JSON.stringify(state.todoItems));
     },
+    clearAllItems(state) {
+      localStorage.clear(); // 로컬스토리지 지우기(전부 지우기) => 로컬스토리지의 금지표시(Clear All)와 동알
+
+      // 화면에 보이는 this.todoItems배열도 비우기
+      state.todoItems = [];
+    },
   },
 });
