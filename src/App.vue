@@ -4,11 +4,8 @@
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <todo-header />
     <!-- // v-on:하위컴포넌트의 이벤트 이름= “현재컴포넌트 메서드 이름” -->
-    <todo-input @addTodoItem="addOneTodoItem" />
-    <todo-list
-      @removeTodoItem="removeOneTodoItem"
-      @completedTodoItem="todoCheckedItem"
-    />
+    <todo-input />
+    <todo-list @completedTodoItem="todoCheckedItem" />
     <todo-footer @clearAllTodo="clearAllItems" />
   </div>
 </template>
@@ -35,14 +32,6 @@ export default {
     // 상위 컴포넌트에서 작성 ⇒>
     // v-on:하위컴포넌트의 이벤트 이름= “현재컴포넌트 메서드 이름”
 
-    removeOneTodoItem(_, index) {
-      localStorage.removeItem("todoListItem");
-
-      // 특정 인덱스에서 하나 지우기(화면 반영용)
-      this.todoItems.splice(index, 1); // splice의 경우 기존배열을 변경해 새로운 배열을 반환(제거한 애들의 배열)
-      // 다시 로컬스토리지에 담기
-      localStorage.setItem("todoListItem", JSON.stringify(this.todoItems));
-    },
     todoCheckedItem(_, i) {
       // todo.completed = !todo.completed;
       this.todoItems[i].completed = !this.todoItems[i].completed;

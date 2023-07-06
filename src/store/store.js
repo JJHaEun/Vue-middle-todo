@@ -40,5 +40,13 @@ export const store = new Vuex.Store({
       // 저장하는 로직후
       localStorage.setItem("todoListItem", JSON.stringify(state.todoItems));
     },
+    removeOneTodoItem(state, payload) {
+      localStorage.removeItem("todoListItem");
+
+      // 특정 인덱스에서 하나 지우기(화면 반영용)
+      state.todoItems.splice(payload.index, 1); // splice의 경우 기존배열을 변경해 새로운 배열을 반환(제거한 애들의 배열)
+      // 다시 로컬스토리지에 담기
+      localStorage.setItem("todoListItem", JSON.stringify(state.todoItems));
+    },
   },
 });

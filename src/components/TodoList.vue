@@ -35,7 +35,11 @@ export default {
 
       // 특정 아이템만 가능하게하기..
       // console.log(item, index);
-      this.$emit("removeTodoItem", todo, index);
+      // this.$emit("removeTodoItem", todo, index);
+      this.$store.commit("removeOneTodoItem", {
+        todo,
+        index,
+      });
     },
     toggleComplete(todo, i) {
       // 체크 버튼을 클릭시에 해당 item completed => 토글  t <=> f
