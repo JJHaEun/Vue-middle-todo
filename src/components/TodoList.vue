@@ -28,7 +28,7 @@
 export default {
   methods: {
     // methods.부분이 스토어의 mutations와 같다!!
-    removeTodo(_, index) {
+    removeTodo(todo, index) {
       // 클릭하면 클릭한것 삭제. index를 받을 수 있을것같음.
       // 다만 지금 console.log()를 찍게되면 어느아이템이나 동일하게 작동
       // console.log();
@@ -37,10 +37,11 @@ export default {
       // console.log(item, index);
       // this.$emit("removeTodoItem", todo, index);
       this.$store.commit("removeOneTodoItem", {
+        todo,
         index,
       });
     },
-    toggleComplete(_, i) {
+    toggleComplete(todo, i) {
       // 체크 버튼을 클릭시에 해당 item completed => 토글  t <=> f
       // 해당 요소 접근
       // this.$emit("completedTodoItem", todo, i);
