@@ -8,13 +8,18 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   methods: {
-    clearAll() {
-      // localStorage.clear(); // 로컬스토리지 지우기(전부 지우기) => 로컬스토리지의 금지표시(Clear All)와 동알
-      // this.$emit("clearAllTodo");
-      this.$store.commit("clearAllItems");
-    },
+    ...mapMutations({
+      clearAll: "clearAllItems",
+    }),
+    // clearAll() {
+    //   // localStorage.clear(); // 로컬스토리지 지우기(전부 지우기) => 로컬스토리지의 금지표시(Clear All)와 동알
+    //   // this.$emit("clearAllTodo");
+    //   this.$store.commit("clearAllItems");
+    // },
   },
 };
 </script>
@@ -27,6 +32,7 @@ export default {
   background-color: white;
   border-radius: 5px;
   margin: 0 auto;
+  cursor: pointer;
 }
 .clearAllBtn {
   color: red;

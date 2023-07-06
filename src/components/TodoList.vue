@@ -7,7 +7,7 @@
         :key="index + 1"
         class="shadow"
       >
-        <span @click="toggleComplete(todo, index)">
+        <span @click="toggleComplete({ todo, index })">
           <i
             class="checkBtn fa fa-check"
             aria-hidden="true"
@@ -35,6 +35,7 @@ export default {
       //  this.$store.commit("removeOneTodoItem", {todo,index}); 이 부분을 간결하게 줄여 편하게 사용할 수 있게 하는 헬퍼함수 mapMutations
       // 헬퍼 함수들은 인자를 선언하지 않아도 호출하는 곳에서 인자가 있다면 암묵적으로 넘긴다.
       removeTodo: "removeOneTodoItem",
+      toggleComplete: "todoCheckedItem",
     }),
 
     // methods.부분이 스토어의 mutations와 같다!!
@@ -51,15 +52,15 @@ export default {
     //     index,
     //   });
     // },
-    toggleComplete(todo, i) {
-      // 체크 버튼을 클릭시에 해당 item completed => 토글  t <=> f
-      // 해당 요소 접근
-      // this.$emit("completedTodoItem", todo, i);
-      this.$store.commit("todoCheckedItem", {
-        i,
-      });
-      // todo.completed ? (todo.completed = false) : (todo.completed = true);
-    },
+    // toggleComplete(todo, i) {
+    //   // 체크 버튼을 클릭시에 해당 item completed => 토글  t <=> f
+    //   // 해당 요소 접근
+    //   // this.$emit("completedTodoItem", todo, i);
+    //   this.$store.commit("todoCheckedItem", {
+    //     i,
+    //   });
+    //   // todo.completed ? (todo.completed = false) : (todo.completed = true);
+    // },
   },
   computed: {
     // todoItemsGet() {

@@ -55,8 +55,8 @@ export const store = new Vuex.Store({
     },
     todoCheckedItem(state, payload) {
       // todo.completed = !todo.completed;
-      state.todoItems[payload.i].completed =
-        !state.todoItems[payload.i].completed;
+      state.todoItems[payload.index].completed =
+        !state.todoItems[payload.index].completed;
       // 로컬스토리지에 아이템 삭제후 다시 넣기
       // 로컬스토리지 데이터 갱신
       localStorage.removeItem("todoListItem");
