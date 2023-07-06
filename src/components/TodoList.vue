@@ -1,8 +1,9 @@
 <template>
   <div>
     <transition-group name="list" tag="ul">
+      <!--  v-for="(todo, index) in this.$store.state.todoItems" -->
       <li
-        v-for="(todo, index) in this.$store.state.todoItems"
+        v-for="(todo, index) in this.todoItemsGet"
         :key="index + 1"
         class="shadow"
       >
@@ -49,6 +50,11 @@ export default {
         i,
       });
       // todo.completed ? (todo.completed = false) : (todo.completed = true);
+    },
+  },
+  computed: {
+    todoItemsGet() {
+      return this.$store.state.todoItems;
     },
   },
 };
