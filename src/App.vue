@@ -5,7 +5,7 @@
     <todo-header />
     <!-- // v-on:하위컴포넌트의 이벤트 이름= “현재컴포넌트 메서드 이름” -->
     <todo-input />
-    <todo-list @completedTodoItem="todoCheckedItem" />
+    <todo-list />
     <todo-footer @clearAllTodo="clearAllItems" />
   </div>
 </template>
@@ -32,14 +32,6 @@ export default {
     // 상위 컴포넌트에서 작성 ⇒>
     // v-on:하위컴포넌트의 이벤트 이름= “현재컴포넌트 메서드 이름”
 
-    todoCheckedItem(_, i) {
-      // todo.completed = !todo.completed;
-      this.todoItems[i].completed = !this.todoItems[i].completed;
-      // 로컬스토리지에 아이템 삭제후 다시 넣기
-      // 로컬스토리지 데이터 갱신
-      localStorage.removeItem("todoListItem");
-      localStorage.setItem("todoListItem", JSON.stringify(this.todoItems));
-    },
     clearAllItems() {
       localStorage.clear(); // 로컬스토리지 지우기(전부 지우기) => 로컬스토리지의 금지표시(Clear All)와 동알
 
