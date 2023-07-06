@@ -19,11 +19,6 @@ import TodoFooter from "./components/TodoFooter.vue";
 
 export default {
   name: "App",
-  data() {
-    return {
-      todoItems: [],
-    };
-  },
 
   components: {
     // HelloWorld
