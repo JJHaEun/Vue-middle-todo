@@ -3,6 +3,7 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <todo-header />
+    <!-- <de-mo /> -->
     <!-- // v-on:하위컴포넌트의 이벤트 이름= “현재컴포넌트 메서드 이름” -->
     <todo-input />
     <todo-list />
@@ -16,12 +17,13 @@ import TodoHeader from "./components/TodoHeader.vue";
 import TodoInput from "./components/TodoInput.vue";
 import TodoList from "./components/TodoList.vue";
 import TodoFooter from "./components/TodoFooter.vue";
-
+// import Demo from "./components/DeMoa.vue";
 export default {
   name: "App",
 
   components: {
     // HelloWorld
+    // "de-mo": Demo,
     "todo-header": TodoHeader,
     "todo-input": TodoInput,
     "todo-list": TodoList,
